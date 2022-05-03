@@ -1,2 +1,2 @@
 # LeetCode-Problems
-LeetCode Problems With their solutions
+Collection of LeetCode Problems which are Frequently asked in many interviews are available With their solutions.
