@@ -7,7 +7,7 @@ vector<vector<int>> subsets(vector<int>& nums) {
             int n = res.size();
             for(int i=0; i<n; i++)
             {
-                res.push_back(v[i]);
+                res.push_back(res[i]);
                 res.back().push_back(x);
             }
         }
