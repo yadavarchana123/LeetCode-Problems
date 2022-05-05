@@ -63,7 +63,5 @@ public:
 		sbst(ind,vec,ans,temp);
 
 		return ans;
-
-
-	}
+    }
 };
