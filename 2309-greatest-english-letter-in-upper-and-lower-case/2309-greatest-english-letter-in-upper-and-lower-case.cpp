@@ -14,7 +14,7 @@ class Solution
             {
                 if (isupper(x))
                 {
-                    if (mp.find(char(x + 32)) != mp.end() and ans[0] < x)
+                    if (mp.find(x + ' ') != mp.end() and ans[0] < x)
                     {
                         ans = x;
                     }
