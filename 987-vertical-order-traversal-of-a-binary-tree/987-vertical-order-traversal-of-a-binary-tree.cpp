@@ -53,12 +53,7 @@ class Solution
         vector<vector < int>> ans;
         for (auto x: mp)
         {
-            vector<int> temp;
-            for (auto y: x.second)
-            {
-                temp.push_back(y);
-            }
-            ans.push_back(temp);
+           ans.push_back(x.second);
         }
         return ans;
     }
