@@ -28,8 +28,8 @@ public:
         int res = 0;
         for(int i=1; i<n; i++)
         {
-          int no_of_nodes_from_ith_server = (time[i]*2 - 1)/patience[i];
-          int last_out_from_ith_server = no_of_nodes_from_ith_server * patience[i];
+          int no_of_message_from_ith_server = (time[i]*2 - 1)/patience[i];
+          int last_out_from_ith_server = no_of_message_from_ith_server * patience[i];
           int last_in_at_ith_server = last_out_from_ith_server + 2*time[i];
             res = max(res, last_in_at_ith_server );
         }
