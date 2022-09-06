@@ -10,19 +10,19 @@
  */
 class Solution {
 public:
-  void mergesort(ListNode **head)
+  void mergesort(ListNode* &head)
     {
-        ListNode * curr=*head;
+        ListNode * curr=head;
         ListNode * first,*second;
         if(!curr||!curr->next)
             return;
-        findmid(curr,&first,&second);
-        mergesort(&first);
-        mergesort(&second);
-        *head = mergeboth(first,second);
+        findmid(curr,first,second);
+        mergesort(first);
+        mergesort(second);
+        head = mergeboth(first,second);
         
     }
-    void findmid(ListNode * curr, ListNode**first,ListNode ** second)
+    void findmid(ListNode * curr, ListNode* &first,ListNode * &second)
     {
         ListNode * fast, * slow;
         slow=curr;
@@ -36,8 +36,8 @@ public:
                 fast=fast->next;
             }
         }
-        *first=curr;
-        *second=slow->next;
+        first=curr;
+        second=slow->next;
         slow->next=NULL;
     }
     ListNode * mergeboth(ListNode * first, ListNode * second)
@@ -63,8 +63,7 @@ public:
       
     }
     ListNode* sortList(ListNode* head) {
-        mergesort(&head);
+        mergesort(head);
         return head;
      }
-
 };
