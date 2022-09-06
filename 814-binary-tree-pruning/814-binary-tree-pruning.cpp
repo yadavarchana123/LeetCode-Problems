@@ -17,7 +17,10 @@ public:
         root->left=pruneTree(root->left);
         root->right=pruneTree(root->right);
         if(!root->left and !root->right and !root->val)
+        {
+            delete(root);
             return NULL;
+        }
         return root;
     }
 };
