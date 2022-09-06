@@ -20,7 +20,6 @@ class Solution
             root->right = pruneTree(root->right);
             if (!root->left and!root->right and!root->val)
                 return NULL;
-
             return root;
         }
 };
