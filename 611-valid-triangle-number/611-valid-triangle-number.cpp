@@ -1,17 +1,20 @@
 class Solution {
 public:
     int triangleNumber(vector<int>& nums) {
-        int ans =0;
-       sort(nums.begin(),nums.end());
+        
+        if(nums.size() < 3)
+            return 0;
+        int ans = 0;
+        sort(nums.begin(), nums.end());
         for(int i=2; i<nums.size(); i++)
         {
-            int j=0, k=i-1;
-            while(j<k)
+            int j = 0, k = i-1;
+            while(j < k)
             {
-                if(nums[j]+nums[k] > nums[i])
+                if(nums[j] + nums[k] > nums[i])
                 {
                     ans += k-j;
-                    k --;
+                    k--;
                 }
                 else
                 {
