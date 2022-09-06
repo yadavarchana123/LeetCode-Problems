@@ -24,9 +24,7 @@ public:
     }
     void findmid(ListNode * curr, ListNode* &first,ListNode * &second)
     {
-        ListNode * fast, * slow;
-        slow=curr;
-        fast=curr->next;
+        ListNode * fast = curr->next, * slow = curr;
         while(fast!=NULL)
         {
             fast=fast->next;
