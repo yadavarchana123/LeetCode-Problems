@@ -1,9 +1,9 @@
 class Solution {
 public:
     string bestHand(vector<int>& ranks, vector<char>& suits) {
-        unordered_map<char,int>mp1; 
-       unordered_map<int,int>mp2;
-        int max1 = 0, max2 = 0;
+      unordered_map<char,int>mp1; 
+      unordered_map<int,int>mp2;
+      int max1 = 0, max2 = 0;
       for(int i=0; i<ranks.size(); i++)
       {
            mp1[suits[i]]++;
