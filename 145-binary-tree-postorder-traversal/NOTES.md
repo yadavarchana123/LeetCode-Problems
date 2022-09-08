@@ -11,7 +11,8 @@ root = NULL (So we dont go down to left child again)
 else
 root = root->right (Traverse the right subtree before printing root)
 Keep iterating till both the below conditions are met -Stack is empty and Root is NULL.
-
+# CODE
+```
 vector<int> postorderTraversal(TreeNode* root) {
 		vector<int> out;
 		if(root==NULL)
@@ -37,7 +38,7 @@ vector<int> postorderTraversal(TreeNode* root) {
 		}
 		return out;
 	}
-  
+  ```
   # Using No Stacks (Morris Traversal). O(n) Time & O(1) Space
   Instead of using stacks to remember our way back up the tree, we are going to modify the tree to create upwards links. 
   We reverse each diagonal shown in the picture (d1-d4), print it and re-reverse it.
@@ -57,8 +58,10 @@ pre->right = NULL.
 root = root->right.
 If left child is null
 root = root->right. (We are climbing up our link.)
-  
-vector<int> postorderTraversal(TreeNode root) {
+
+# CODE
+```
+vector<int> postorderTraversal(TreeNode* root) {
 	vector<int>  out;
 	if(root == NULL)
 		return out;
@@ -104,3 +107,4 @@ void reverse(TreeNode* from, TreeNode* to){
         node = next;
     }
 } 
+```
