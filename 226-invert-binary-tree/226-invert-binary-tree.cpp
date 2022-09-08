@@ -14,19 +14,19 @@ public:
     TreeNode* invertTree(TreeNode* root) {
         if(!root)
         return NULL;
-        queue<TreeNode*>q;
-        q.push(root);
-        while(!q.empty())
+        stack<TreeNode*>s;
+        s.push(root);
+        while(!s.empty())
         {
-          TreeNode* curr = q.front();
-          q.pop();
+          TreeNode* curr = s.top();
+          s.pop();
           TreeNode* temp = curr->left;
           curr->left = curr->right;
           curr->right = temp;
           if(curr->left)
-              q.push(curr->left);
+              s.push(curr->left);
           if(curr->right)
-              q.push(curr->right);  
+              s.push(curr->right);  
         }
         return root;
     }
