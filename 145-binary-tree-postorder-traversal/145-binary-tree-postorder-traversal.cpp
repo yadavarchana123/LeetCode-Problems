@@ -1,39 +1,70 @@
 /**
  *Definition for a binary tree node.
  *struct TreeNode {
- *    int val;
- *    TreeNode * left;
- *    TreeNode * right;
- *    TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ *   int val;
+ *   TreeNode * left;
+ *   TreeNode * right;
+ *   TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *   TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *   TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  *};
  */
 class Solution
 {
     public:
-        vector<int> postorderTraversal(TreeNode *root)
+        void reverse(TreeNode *from, TreeNode *to)
         {
-            vector<int> postorder;
-            if (!root)
-                return postorder;
-            stack<TreeNode*> s1, s2;
-            s1.push(root);
-            while (!s1.empty())
+            if (from == to)
+                return;
+            TreeNode *prev = from, *node = from->right;
+            while (prev != to)
             {
-                TreeNode *curr = s1.top();
-                s1.pop();
-                s2.push(curr);
-                if (curr->left)
-                    s1.push(curr->left);
-                if (curr->right)
-                    s1.push(curr->right);
+                TreeNode *next = node->right;
+                node->right = prev;
+                prev = node;
+                node = next;
             }
-            while (!s2.empty())
-            {
-                postorder.push_back(s2.top()->val);
-                s2.pop();
-            }
-            return postorder;
         }
+    vector<int> postorderTraversal(TreeNode* root)
+    {
+        vector<int> out;
+        if (root == NULL)
+            return out;
+        TreeNode *dummy = new TreeNode(-1), *pre = NULL;
+        dummy->left = root;
+        root = dummy;
+        while (root)
+        {
+            if (root->left)
+            {
+                pre = root->left;
+                while (pre->right && pre->right != root)
+                    pre = pre->right;
+                if (pre->right == NULL)
+                {
+                    pre->right = root;
+                    root = root->left;
+                }
+                else
+                {
+                    TreeNode *node = pre;
+                    reverse(root->left, pre);
+                    while (node != root->left)
+                    {
+                        out.push_back(node->val);
+                        node = node->right;
+                    }
+                    out.push_back(node->val);	// Print again since we are stopping at node=root.left
+                    reverse(pre, root->left);
+                    pre->right = NULL;
+                    root = root->right;
+                }
+            }
+            else
+            {
+                root = root->right;
+            }
+        }
+        return out;
+    }
 };
