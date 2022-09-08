@@ -12,11 +12,11 @@ public:
            max2 = max(max2,mp2[ranks[i]]);
        }
         if( max1 == 5)
-              return "Flush";
+           return "Flush";
         if(max2 >= 3)
-              return "Three of a Kind";
+            return "Three of a Kind";
         if(max2 >= 2)
-              return "Pair";
+            return "Pair";
         return "High Card";
     }
 };
