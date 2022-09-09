@@ -11,15 +11,15 @@ class Solution
         }
     int numberOfWeakCharacters(vector<vector < int>> &properties)
     {
-        sort(properties.begin(), properties.end(), comp);	//sorting the array
-        int mtn = INT_MIN;	//max till now while moving from right
+        sort(properties.begin(), properties.end(), comp);	
+        int maxi = INT_MIN;	
         int ans = 0;
 
         for (int i = properties.size() - 1; i >= 0; i--)
         {
-            if (properties[i][1] < mtn)	// if the second parameter is also less increase the ans
+            if (properties[i][1] < maxi)	
                 ans++;
-            mtn = max(mtn, properties[i][1]);
+            maxi = max(maxi, properties[i][1]);
         }
         return ans;
     }
