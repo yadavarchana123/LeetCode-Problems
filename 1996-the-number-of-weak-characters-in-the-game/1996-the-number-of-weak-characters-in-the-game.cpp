@@ -1,26 +1,27 @@
 class Solution
 {
     public:
-        static bool cmp(vector<int> &v1, vector<int> &v2)
+        static bool comp(vector<int> &a, vector<int> &b)
         {
-            return v1[0] == v2[0] ? v1[1] > v2[1] : v1[0] < v2[0];
-        }
-    int numberOfWeakCharacters(vector<vector < int>> &nums)
-    {
-        int count = 0;
-        int n = nums.size();
-        sort(nums.begin(), nums.end(), cmp);
-        stack<pair<int, int>> s;
-        for (int i = 0; i < n; i++)
-        {
-            while (s.size() && s.top().first < nums[i][0] && s.top().second < nums[i][1])
+            if (a[0] == b[0])
             {
-                s.pop();
-                count++;
+                return a[1] > b[1];
             }
-            s.push({ nums[i][0],
-                nums[i][1] });
+            return a[0] < b[0];
         }
-        return count;
+    int numberOfWeakCharacters(vector<vector < int>> &properties)
+    {
+        sort(properties.begin(), properties.end(), comp);	//sorting the array
+        int mtn = INT_MIN;	//max till now while moving from right
+        int ans = 0;
+
+        for (int i = properties.size() - 1; i >= 0; i--)
+        {
+            if (properties[i][1] < mtn)	// if the second parameter is also less increase the ans
+                ans++;
+            mtn = max(mtn, properties[i][1]);
+        }
+        return ans;
     }
+
 };
