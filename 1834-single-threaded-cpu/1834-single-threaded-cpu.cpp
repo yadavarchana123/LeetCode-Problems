@@ -1,5 +1,6 @@
 class Solution {
     typedef pair<int,int> p;
+    #define ll long long 
 public:
     vector<int> getOrder(vector<vector<int>>& tasks) {
         vector<int>order; 
@@ -9,7 +10,7 @@ public:
             tasks[i].push_back(i);
         }
         sort(tasks.begin(),tasks.end());
-        long long top = 0, i=0;
+        ll top = 0, i=0;
         while(i<tasks.size() || !q.empty())
         {
             if(q.empty())
