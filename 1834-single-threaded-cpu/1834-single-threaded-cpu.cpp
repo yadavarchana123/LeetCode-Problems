@@ -1,8 +1,9 @@
 class Solution {
+    typedef pair<int,int> p;
 public:
     vector<int> getOrder(vector<vector<int>>& tasks) {
         vector<int>order; 
-        priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>q; 
+        priority_queue<p ,vector<p>,greater<p>>q; 
         for(int i=0; i<tasks.size(); i++)
         {
             tasks[i].push_back(i);
