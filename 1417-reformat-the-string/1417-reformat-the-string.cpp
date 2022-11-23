@@ -11,15 +11,15 @@ class Solution
                 else str += s[i];
             }
             if (digit.size() < s.size() / 2 or str.size() < s.size() / 2) return "";
-            bool f ;
+            bool f;
             if (digit.size() > str.size()) f = true;
             else f = false;
             for (int i = 0, j = 0; i < min(digit.size(), str.size()) or j < min(digit.size(), str.size());)
             {
                 if (f)
-                    res += digit[i++], f = false;
+                    res += digit[i++], f = !f;
                 else
-                    res += str[j++], f = true;
+                    res += str[j++], f = !f;
             }
             if (digit.size() > str.size()) res += digit.back();
             else if (digit.size() < str.size()) res += str.back();
