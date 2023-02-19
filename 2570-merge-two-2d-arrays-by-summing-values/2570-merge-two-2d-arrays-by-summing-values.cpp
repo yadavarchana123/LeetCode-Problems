@@ -5,7 +5,7 @@ public:
         vector<vector<int>>ans;
         for( auto x : nums1)
         {
-            mp[x[0]] += x[1];
+            mp[x[0]] = x[1];
         }
         for( auto x : nums2)
         {
