@@ -11,12 +11,12 @@ public:
             }
         }
     
-        int cnt =0;
-        for(int i=0; i<nums.size(); i++){
+        int cnt = 0, m = nums.size();
+        for(int i = 0; i < m; i++){
             if(nums[i] == elm){
                 cnt++ ;
                 mp[nums[i]]--;
-                if((cnt*2) > i+1 and (mp[nums[i]]*2) > (nums.size()-i-1)){
+                if((cnt*2) > i+1 and (mp[nums[i]]*2) > (m-i-1)){
                     return i;
                 } 
             }
