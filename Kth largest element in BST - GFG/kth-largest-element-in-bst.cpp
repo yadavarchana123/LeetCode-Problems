@@ -97,24 +97,24 @@ struct Node {
 class Solution
 {
     public:
-    int kthLargest(Node *root, int k)
+    int ans = -1, cnt;
+    void helper(Node *root){
+        if(!root)
+        return;
+        helper(root->right);
+        cnt--;
+        if(cnt == 0){
+            ans = root->data;
+            return ;
+        }
+        helper(root->left);
+    }
+    int kthLargest(Node *root, int K)
     {
         //Your code here
-        stack<Node*>st;
-        Node* temp = root;
-        while(temp || !st.empty()){
-            while(temp){
-                st.push(temp);
-                temp = temp->right;
-            }
-            k--;
-            temp = st.top();
-            if(k == 0)
-            return temp->data;
-            st.pop();
-            temp = temp->left;
-        }
-        return -1;
+        cnt = K;
+        helper(root);
+        return ans;
     }
 };
 
